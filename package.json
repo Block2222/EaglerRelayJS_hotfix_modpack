@@ -1,8 +1,8 @@
 {
-  "name": "openeaglerrelay",
+  "name": "eaglerrelayjs",
   "version": "0.1.0",
   "description": "Eaglercraft relay server implementation in typescript",
-  "repository": "github:WebMCDevelopment/OpenEaglerRelay",
+  "repository": "github:WebMCDevelopment/EaglerRelayJS",
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
