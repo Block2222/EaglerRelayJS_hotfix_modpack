@@ -128,7 +128,7 @@ export class EaglerSPRelay {
                     ws.send(RelayPacket.writePacket(new RelayPacketFFErrorCode(4, `The join code is the wrong length, it should be ${codeLen} chars long`)));
                     ws.close();
                   } else {
-                    if (!RelayConfig.get('join_codes.mixed_length')) code = code.toLowerCase();
+                    if (!RelayConfig.get('join_codes.mixed_case')) code = code.toLowerCase();
                     srv = this.SERVER_CODES.get(code);
                     if (srv === undefined) {
                       ws.send(RelayPacket.writePacket(new RelayPacketFFErrorCode(5, 'Invalid code, no LAN world found!')));
