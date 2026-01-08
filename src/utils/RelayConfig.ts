@@ -7,7 +7,7 @@ import { RelayServer, RelayType } from '../pkt/RelayPacket01ICEServers';
 const CONFIG_DEFAULT = {
   debug: false,
   server: {
-    comment: RelayVersion.DEFAULT_COMMENT,
+    comment: "Blocks Bullshit eaglermod-sf Fixed Relay",
     show_local_worlds: true,
     ip_forwarding: {
       enabled: false,
@@ -46,7 +46,7 @@ const CONFIG_DEFAULT = {
     }
   ],
   limits: {
-    worlds_per_ip: 32,
+    worlds_per_ip: 1,
     world_ratelimit: {
       enabled: true,
       period: 192,
@@ -125,25 +125,11 @@ export class RelayConfig {
   }
 
   public static generateCode (): string {
-    let ret = '';
-    const chars: string = this.get('join_codes.allowed_chars') as string;
-    const mixed: number = this.get('join_codes.mixed_case') as number;
-    for (let i = 0; i < (this.get('join_codes.length') as number); i++) {
-      let c = chars.charAt(Math.floor(Math.random() * chars.length));
-      if (mixed) c = Math.random() < 0.5 ? c.toLowerCase() : c.toUpperCase();
-      ret += c;
-    }
-    return ret;
+    return "server";
   }
 
   public static getRealIP (req: IncomingMessage): string {
-    if (this.get('server.ip_forwarding.enabled')) {
-      for (const header of this.get('server.ip_forwarding.headers') as string[]) {
-        const rHeader: any = req.headers[header];
-        if (rHeader !== undefined) return rHeader;
-      }
-    }
-    return req.socket.remoteAddress ?? '127.0.0.1';
+    return "127.0.0.1";
   }
 
   public static isOriginAllowed (input: string): boolean {
